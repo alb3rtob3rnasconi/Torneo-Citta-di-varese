@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome per le icone -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        
+    
     <script>
         tailwind.config = {
             theme: {
@@ -24,13 +24,22 @@
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        heading: ['Impact', 'Arial Black', 'sans-serif']
+                        heading: ['Impact', 'Arial Black', 'sans-serif'],
+                        vehicle: ['"Vehicle JNL"', 'sans-serif'] // Aggiunta font Vehicle JNL
                     }
                 }
             }
         }
     </script>
     <style>
+        /* Definizione Font Personalizzato Vehicle JNL (assicurateVi di avere il file o averlo installato) */
+        @font-face {
+            font-family: 'Vehicle JNL';
+            src: local('Vehicle JNL Regular'), local('Vehicle-JNL-Regular');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         /* Stile personalizzato per la barra di scorrimento */
         ::-webkit-scrollbar {
             width: 10px;
@@ -63,18 +72,23 @@
     <nav class="fixed w-full bg-black/90 backdrop-blur-sm z-50 border-b border-varese-yellow/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-heading text-varese-yellow text-xl tracking-wider">
-                    TORNEO CITTÀ DI VARESE U12
+                <!-- Logo e Titolo nella Navbar -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="cittadivarese.svg" alt="Logo Torneo" class="h-10 w-auto drop-shadow-md">
+                    <span class="font-heading text-varese-yellow text-xl tracking-wider hidden sm:block">TORNEO CITTÀ DI VARESE U12</span>
                 </div>
+                
+                <!-- Menu Desktop -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-6">
-                        <a href="#home" class="hover:text-varese-yellow transition px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#risultati" class="hover:text-varese-yellow transition px-3 py-2 rounded-md text-sm font-medium">Risultati</a>
-                        <a href="#menu-pasti" class="hover:text-varese-yellow transition px-3 py-2 rounded-md text-sm font-medium">Menù</a>
-                        <a href="#merchandising" class="hover:text-varese-yellow transition px-3 py-2 rounded-md text-sm font-medium">Shop</a>
-                        <a href="#eventi" class="hover:text-varese-yellow transition px-3 py-2 rounded-md text-sm font-medium">Programma</a>
+                    <div class="ml-10 flex items-baseline space-x-6 font-vehicle font-bold uppercase">
+                        <a href="#eventi" class="text-white hover:text-varese-yellow transition px-3 py-2 rounded-md text-lg">Programma</a>
+                        <a href="#risultati" class="text-white hover:text-varese-yellow transition px-3 py-2 rounded-md text-lg">Risultati</a>
+                        <a href="#menu-pasti" class="text-white hover:text-varese-yellow transition px-3 py-2 rounded-md text-lg">Menù</a>
+                        <a href="#merchandising" class="text-white hover:text-varese-yellow transition px-3 py-2 rounded-md text-lg">Shop</a>
+                        <a href="#foto" class="text-white hover:text-varese-yellow transition px-3 py-2 rounded-md text-lg">Foto</a>
                     </div>
                 </div>
+                
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-varese-yellow hover:text-white focus:outline-none">
@@ -84,13 +98,13 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-varese-yellow/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-varese-yellow/20 font-vehicle font-bold uppercase">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
-                <a href="#home" class="block hover:text-varese-yellow px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#risultati" class="block hover:text-varese-yellow px-3 py-2 rounded-md text-base font-medium">Risultati</a>
-                <a href="#menu-pasti" class="block hover:text-varese-yellow px-3 py-2 rounded-md text-base font-medium">Menù</a>
-                <a href="#merchandising" class="block hover:text-varese-yellow px-3 py-2 rounded-md text-base font-medium">Shop</a>
-                <a href="#eventi" class="block hover:text-varese-yellow px-3 py-2 rounded-md text-base font-medium">Programma</a>
+                <a href="#eventi" class="block text-white hover:text-varese-yellow px-3 py-2 rounded-md text-base">Programma</a>
+                <a href="#risultati" class="block text-white hover:text-varese-yellow px-3 py-2 rounded-md text-base">Risultati</a>
+                <a href="#menu-pasti" class="block text-white hover:text-varese-yellow px-3 py-2 rounded-md text-base">Menù</a>
+                <a href="#merchandising" class="block text-white hover:text-varese-yellow px-3 py-2 rounded-md text-base">Shop</a>
+                <a href="#foto" class="block text-white hover:text-varese-yellow px-3 py-2 rounded-md text-base">Foto</a>
             </div>
         </div>
     </nav>
@@ -105,7 +119,7 @@
 
         <div class="z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
             
-            <!-- CONTENITORE LOGO SVG PRINCIPALE CORRETTO -->
+            <!-- CONTENITORE LOGO SVG PRINCIPALE -->
             <img src="cittadivarese.svg" alt="cittadivarese" class="w-full max-w-lg mx-auto drop-shadow-[0_0_15px_rgba(251,191,36,0.5)] mb-8 rounded-xl">
             
             <h1 class="text-4xl md:text-5xl font-heading text-white mb-4 uppercase tracking-wide">
@@ -115,18 +129,97 @@
                 28-29 Marzo 2026 - Il grande hockey su ghiaccio giovanile nella Città di Varese.
             </p>
             <div class="flex flex-wrap gap-4 justify-center">
-                <a href="#risultati" class="bg-varese-yellow text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg shadow-varese-yellow/20">
-                    <i class="fas fa-trophy mr-2"></i> Segui i Risultati
+                <a href="#eventi" class="bg-varese-yellow text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg shadow-varese-yellow/20">
+                    <i class="fas fa-calendar-alt mr-2"></i> Programma Eventi
                 </a>
-                <a href="#eventi" class="border-2 border-varese-yellow text-varese-yellow font-bold py-3 px-8 rounded-full hover:bg-varese-yellow hover:text-black transition transform hover:scale-105">
-                    <i class="fas fa-calendar-alt mr-2"></i> Programma
+                <a href="#risultati" class="border-2 border-varese-yellow text-varese-yellow font-bold py-3 px-8 rounded-full hover:bg-varese-yellow hover:text-black transition transform hover:scale-105">
+                    <i class="fas fa-trophy mr-2"></i> Segui i Risultati
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Sezione Risultati (Preview Tournify) -->
-    <section id="risultati" class="py-20 bg-black/50 border-y border-varese-yellow/10">
+    <!-- 1. Calendario Eventi del Torneo (Spostato come prima sezione) -->
+    <section id="eventi" class="py-20 bg-black border-y border-varese-yellow/10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading text-varese-yellow mb-2 uppercase">Programma Eventi</h2>
+                <div class="w-24 h-1 bg-varese-yellow mx-auto rounded"></div>
+                <p class="mt-4 text-gray-400">Il palinsesto delle giornate del torneo.</p>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-varese-yellow before:to-transparent">
+                
+                <!-- Evento 1 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                        <i class="fas fa-door-open font-bold text-black"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
+                            <span class="text-xs font-medium text-gray-400">08:00</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Apertura Impianto e Accoglienza Squadre</h3>
+                        <p class="text-gray-400 text-sm">Registrazione dei team partecipanti, assegnazione spogliatoi e riscaldamento libero sul ghiaccio.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                        <i class="fas fa-hockey-puck font-bold text-black"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
+                            <span class="text-xs font-medium text-gray-400">09:30</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Inizio Fase a Gironi</h3>
+                        <p class="text-gray-400 text-sm">Fischio d'inizio per le prime partite di qualificazione del torneo. Servizio ristoro aperto in contemporanea.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 3 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                        <i class="fas fa-star font-bold text-black"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
+                            <span class="text-xs font-medium text-gray-400">18:00</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Cerimonia Ufficiale e Sfilata</h3>
+                        <p class="text-gray-400 text-sm">Tutte le squadre in pista per il saluto delle autorità e la foto di gruppo sul ghiaccio.</p>
+                    </div>
+                </div>
+
+                <!-- Evento 4 -->
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
+                        <i class="fas fa-trophy font-bold text-black"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-varese-yellow">Domenica 29 Marzo</span>
+                            <span class="text-xs font-medium text-gray-400">09:00</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-1">Fasi Finali e Premiazioni</h3>
+                        <p class="text-gray-400 text-sm">Partite ad eliminazione diretta, finali dal 1° all'ultimo posto e premiazioni previste per le ore 16:30.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <p class="text-center text-sm text-gray-500 mt-10 italic">
+                Gli orari potrebbero subire lievi variazioni in base all'andamento delle partite.
+            </p>
+        </div>
+    </section>
+
+    <!-- 2. Sezione Risultati (Preview Tournify) -->
+    <section id="risultati" class="py-20 bg-black/50">
         <div class="max-w-5xl mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-heading text-varese-yellow mb-2 uppercase">Risultati Live</h2>
@@ -162,8 +255,8 @@
         </div>
     </section>
 
-    <!-- Sezione Menù Pasti -->
-    <section id="menu-pasti" class="py-20">
+    <!-- 3. Sezione Menù Pasti -->
+    <section id="menu-pasti" class="py-20 border-t border-varese-yellow/10">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-heading text-varese-yellow mb-2 uppercase">Menù Food & Beverage</h2>
@@ -251,7 +344,7 @@
         </div>
     </section>
 
-    <!-- Sezione Merchandising (Griglia 3 colonne x 4 righe = 12 elementi) -->
+    <!-- 4. Sezione Merchandising -->
     <section id="merchandising" class="py-20 bg-zinc-950">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
@@ -266,7 +359,7 @@
                 <!-- Riga 1 -->
                 <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 group hover:border-varese-yellow transition duration-300">
                     <div class="aspect-square bg-zinc-800 flex items-center justify-center relative overflow-hidden">
-                        <!-- Placeholder Immagine (Sostituire src con l'immagine reale) -->
+                        <!-- Placeholder Immagine -->
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition duration-300 z-10"></div>
                         <i class="fas fa-tshirt text-6xl text-zinc-600 group-hover:scale-110 transition duration-300"></i>
                         <span class="absolute bottom-2 right-2 bg-varese-yellow text-black text-xs font-bold px-2 py-1 rounded z-20">€ 20.00</span>
@@ -404,91 +497,12 @@
         </div>
     </section>
 
-    <!-- Calendario Eventi del Torneo -->
-    <section id="eventi" class="py-20 bg-black border-t border-varese-yellow/10">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading text-varese-yellow mb-2 uppercase">Programma Eventi</h2>
-                <div class="w-24 h-1 bg-varese-yellow mx-auto rounded"></div>
-                <p class="mt-4 text-gray-400">Il palinsesto delle giornate del torneo.</p>
-            </div>
-
-            <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-varese-yellow before:to-transparent">
-                
-                <!-- Evento 1 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
-                        <i class="fas fa-door-open font-bold text-black"></i>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
-                            <span class="text-xs font-medium text-gray-400">08:00</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-1">Apertura Impianto e Accoglienza Squadre</h3>
-                        <p class="text-gray-400 text-sm">Registrazione dei team partecipanti, assegnazione spogliatoi e riscaldamento libero sul ghiaccio.</p>
-                    </div>
-                </div>
-
-                <!-- Evento 2 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
-                        <i class="fas fa-hockey-puck font-bold text-black"></i>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
-                            <span class="text-xs font-medium text-gray-400">09:30</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-1">Inizio Fase a Gironi</h3>
-                        <p class="text-gray-400 text-sm">Fischio d'inizio per le prime partite di qualificazione del torneo. Servizio ristoro aperto in contemporanea.</p>
-                    </div>
-                </div>
-
-                <!-- Evento 3 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
-                        <i class="fas fa-star font-bold text-black"></i>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-bold text-varese-yellow">Sabato 28 Marzo</span>
-                            <span class="text-xs font-medium text-gray-400">18:00</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-1">Cerimonia Ufficiale e Sfilata</h3>
-                        <p class="text-gray-400 text-sm">Tutte le squadre in pista per il saluto delle autorità e la foto di gruppo sul ghiaccio.</p>
-                    </div>
-                </div>
-
-                <!-- Evento 4 -->
-                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-black group-[.is-active]:bg-varese-yellow text-black group-[.is-active]:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 relative z-10">
-                        <i class="fas fa-trophy font-bold text-black"></i>
-                    </div>
-                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-zinc-900 p-6 rounded-xl border border-zinc-800 hover:border-varese-yellow transition-colors">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="font-bold text-varese-yellow">Domenica 29 Marzo</span>
-                            <span class="text-xs font-medium text-gray-400">09:00</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-1">Fasi Finali e Premiazioni</h3>
-                        <p class="text-gray-400 text-sm">Partite ad eliminazione diretta, finali dal 1° all'ultimo posto e premiazioni previste per le ore 16:30.</p>
-                    </div>
-                </div>
-
-            </div>
-            
-            <p class="text-center text-sm text-gray-500 mt-10 italic">
-                Gli orari potrebbero subire lievi variazioni in base all'andamento delle partite.
-            </p>
-        </div>
-    </section>
-
-    <!-- Sezione Foto e Footer -->
-    <footer class="bg-zinc-950 pt-16 pb-8 border-t border-varese-yellow/20 relative">
+    <!-- 5. Sezione Foto e Footer -->
+    <footer id="foto" class="bg-zinc-950 pt-16 pb-8 border-t border-varese-yellow/20 relative">
         <div class="max-w-4xl mx-auto px-4 text-center">
             
             <!-- Link alle Foto -->
-            <div id="foto" class="mb-16 bg-zinc-900 border border-zinc-800 p-10 rounded-2xl shadow-xl">
+            <div class="mb-16 bg-zinc-900 border border-zinc-800 p-10 rounded-2xl shadow-xl">
                 <i class="fas fa-camera-retro text-5xl text-varese-yellow mb-4"></i>
                 <h2 class="text-2xl font-heading uppercase mb-2">Galleria Fotografica</h2>
                 <p class="text-gray-400 mb-6">Guarda, scarica e condividi i momenti più belli del Torneo Città di Varese U12.</p>
