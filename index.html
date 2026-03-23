@@ -111,35 +111,44 @@
 
     <!-- Header / Home Page -->
     <header id="home" class="pt-24 pb-12 flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10 pointer-events-none">
+        
+        <!-- Sfondo Fotografico con Filtro Scuro -->
+        <div class="absolute inset-0 z-0">
+            <img src="DSC00190.jpg" alt="Squadra Varese U12" class="w-full h-full object-cover object-center">
+            <!-- Filtro nero al 75% per far leggere bene i testi -->
+            <div class="absolute inset-0 bg-black/75"></div> 
+        </div>
+
+        <!-- Effetti Luce Decorativi (sopra il filtro nero) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20 pointer-events-none mix-blend-screen">
             <div class="absolute -top-24 -left-24 w-96 h-96 bg-varese-yellow rounded-full blur-3xl"></div>
             <div class="absolute bottom-10 -right-10 w-64 h-64 bg-varese-yellow rounded-full blur-3xl"></div>
         </div>
 
-        <div class="z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
+        <!-- Contenuto in Primo Piano -->
+        <div class="z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center relative">
             
             <!-- CONTENITORE LOGO SVG PRINCIPALE -->
-            <img src="cittadivarese.svg" alt="cittadivarese" class="w-full max-w-lg mx-auto drop-shadow-[0_0_15px_rgba(251,191,36,0.5)] mb-8 rounded-xl">
+            <img src="cittadivarese.svg" alt="cittadivarese" class="w-full max-w-lg mx-auto drop-shadow-[0_0_15px_rgba(251,191,36,0.6)] mb-8 rounded-xl">
             
-            <h1 class="text-4xl md:text-5xl font-heading text-white mb-4 uppercase tracking-wide">
+            <h1 class="text-4xl md:text-5xl font-heading text-white mb-4 uppercase tracking-wide drop-shadow-lg">
                 Benvenuti al Torneo
             </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl">
+            <p class="text-xl text-gray-200 mb-10 max-w-2xl drop-shadow-md">
                 28-29 Marzo 2026 - Il grande hockey su ghiaccio giovanile nella Città di Varese.
             </p>
             <div class="flex flex-wrap gap-4 justify-center">
                 <a href="#eventi" class="bg-varese-yellow text-black font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition transform hover:scale-105 shadow-lg shadow-varese-yellow/20">
                     <i class="fas fa-calendar-alt mr-2"></i> Programma Eventi
                 </a>
-                <a href="#risultati" class="border-2 border-varese-yellow text-varese-yellow font-bold py-3 px-8 rounded-full hover:bg-varese-yellow hover:text-black transition transform hover:scale-105">
+                <a href="#risultati" class="border-2 border-varese-yellow text-varese-yellow font-bold py-3 px-8 rounded-full hover:bg-varese-yellow hover:text-black transition transform hover:scale-105 backdrop-blur-sm bg-black/30">
                     <i class="fas fa-trophy mr-2"></i> Segui i Risultati
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- 1. Calendario Eventi del Torneo (Spostato come prima sezione) -->
+    <!-- 1. Calendario Eventi del Torneo -->
     <section id="eventi" class="py-20 bg-black border-y border-varese-yellow/10">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-16">
